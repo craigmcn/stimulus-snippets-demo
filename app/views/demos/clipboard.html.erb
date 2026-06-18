@@ -1,0 +1,26 @@
+<h2>Clipboard</h2>
+<p>Copy text from a source element to the clipboard on button click, with brief feedback.</p>
+
+<div class="demo-box" data-controller="clipboard">
+  <label for="clipboard-input">Copy this input's value</label>
+  <input
+    id="clipboard-input"
+    type="text"
+    value="Hello world"
+    data-clipboard-target="source"
+    readonly
+  />
+  <p>
+    <button type="button" data-action="click->clipboard#copy">Copy</button>
+    <span data-clipboard-target="feedback" hidden aria-live="polite">Copied!</span>
+  </p>
+</div>
+
+<div class="demo-box" data-controller="clipboard">
+  <p>Copy a code snippet:</p>
+  <code data-clipboard-target="source">gem "stimulus-rails"</code>
+  <p>
+    <button type="button" data-action="click->clipboard#copy">Copy</button>
+    <span data-clipboard-target="feedback" hidden aria-live="polite">Copied!</span>
+  </p>
+</div>

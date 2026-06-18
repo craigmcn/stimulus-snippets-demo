@@ -1,0 +1,28 @@
+<h2>Form Confirm</h2>
+<p>Show a <code>&lt;dialog&gt;</code>-based confirmation prompt before a form submits or a link/button proceeds.</p>
+
+<div
+  class="demo-box"
+  data-controller="form-confirm"
+  data-form-confirm-message-value="Delete this post? This cannot be undone."
+>
+  <form action="#" method="post" data-action="submit->form-confirm#intercept">
+    <button type="submit">Delete post</button>
+  </form>
+
+  <dialog data-form-confirm-target="dialog">
+    <p data-form-confirm-target="message"></p>
+    <button type="button" data-action="click->form-confirm#proceed">Delete</button>
+    <button type="button" class="secondary" data-action="click->form-confirm#cancel">Cancel</button>
+  </dialog>
+</div>
+
+<div class="demo-box" data-controller="form-confirm">
+  <a href="#" data-action="click->form-confirm#intercept">Clear cart</a>
+
+  <dialog data-form-confirm-target="dialog">
+    <p>Clear your cart? Items will not be saved.</p>
+    <button type="button" data-action="click->form-confirm#proceed">Clear</button>
+    <button type="button" class="secondary" data-action="click->form-confirm#cancel">Cancel</button>
+  </dialog>
+</div>

@@ -1,0 +1,12 @@
+<h2>Dismiss</h2>
+<p>Click a button to remove or hide the controller element — alerts, flash notices, banners.</p>
+
+<div class="demo-box" data-controller="dismiss" role="alert">
+  <p>Your changes have been saved. (removed from the DOM on dismiss)</p>
+  <button type="button" data-action="click->dismiss#dismiss" aria-label="Dismiss">&times;</button>
+</div>
+
+<div class="demo-box" data-controller="dismiss" role="alert">
+  <p>Your session will expire soon. (hidden, not removed, on dismiss)</p>
+  <button type="button" data-action="click->dismiss#hide" aria-label="Dismiss">&times;</button>
+</div>

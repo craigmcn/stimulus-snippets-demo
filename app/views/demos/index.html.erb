@@ -1,0 +1,11 @@
+<h2>Stimulus Snippets demos</h2>
+<p>
+  A minimal Rails app demonstrating each controller from
+  <a href="https://github.com/craigmcn/stimulus-snippets" target="_blank" rel="noopener">stimulus-snippets</a>.
+  Pick a component from the sidebar.
+</p>
+<ul>
+  <% @demos.each do |demo| %>
+    <li><%= link_to demo[:title], demo_path(demo[:id]) %></li>
+  <% end %>
+</ul>

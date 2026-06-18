@@ -1,0 +1,77 @@
+<h2>Accordion</h2>
+<p>Expand and collapse content panels, with ARIA disclosure support.</p>
+
+<div class="demo-box" data-controller="accordion">
+  <h3>
+    <button
+      type="button"
+      data-accordion-target="trigger"
+      data-action="click->accordion#toggle keydown->accordion#keydown"
+      aria-expanded="false"
+    >
+      Section One
+    </button>
+  </h3>
+  <div data-accordion-target="panel" hidden>
+    <p>Content for section one.</p>
+  </div>
+
+  <h3>
+    <button
+      type="button"
+      data-accordion-target="trigger"
+      data-action="click->accordion#toggle keydown->accordion#keydown"
+      aria-expanded="false"
+    >
+      Section Two
+    </button>
+  </h3>
+  <div data-accordion-target="panel" hidden>
+    <p>Content for section two.</p>
+  </div>
+
+  <h3>
+    <button
+      type="button"
+      data-accordion-target="trigger"
+      data-action="click->accordion#toggle keydown->accordion#keydown"
+      aria-expanded="false"
+    >
+      Section Three
+    </button>
+  </h3>
+  <div data-accordion-target="panel" hidden>
+    <p>Content for section three.</p>
+  </div>
+</div>
+
+<h3>Single-open (exclusive) mode</h3>
+<div class="demo-box" data-controller="accordion" data-accordion-exclusive-value="true">
+  <h3>
+    <button
+      type="button"
+      data-accordion-target="trigger"
+      data-action="click->accordion#toggle keydown->accordion#keydown"
+      aria-expanded="true"
+    >
+      Alpha
+    </button>
+  </h3>
+  <div data-accordion-target="panel">
+    <p>Opening another section closes this one.</p>
+  </div>
+
+  <h3>
+    <button
+      type="button"
+      data-accordion-target="trigger"
+      data-action="click->accordion#toggle keydown->accordion#keydown"
+      aria-expanded="false"
+    >
+      Beta
+    </button>
+  </h3>
+  <div data-accordion-target="panel" hidden>
+    <p>Content for Beta.</p>
+  </div>
+</div>

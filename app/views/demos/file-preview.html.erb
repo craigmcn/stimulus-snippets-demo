@@ -1,0 +1,19 @@
+<h2>File Preview</h2>
+<p>Show a thumbnail (images) or filename and size (everything else) for files selected in a file input, before the form is submitted.</p>
+
+<div class="demo-box" data-controller="file-preview">
+  <label for="attachments">Attachments</label>
+  <input
+    id="attachments"
+    type="file"
+    multiple
+    data-file-preview-target="input"
+    data-action="change->file-preview#preview"
+  />
+
+  <p><button type="button" class="secondary" data-action="file-preview#clear">Clear</button></p>
+
+  <ul data-file-preview-target="list"></ul>
+
+  <p data-file-preview-target="empty">No files chosen.</p>
+</div>

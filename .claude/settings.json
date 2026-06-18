@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bin/rails routes*)",
+      "Bash(bin/rubocop*)",
+      "Bash(bin/brakeman*)",
+      "Bash(bin/bundler-audit*)",
+      "Bash(bin/importmap audit*)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)",
+      "Bash(git branch*)",
+      "Bash(find . *)",
+      "Bash(ls*)",
+      "Bash(grep*)"
+    ]
+  }
+}

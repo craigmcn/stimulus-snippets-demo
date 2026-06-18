@@ -1,0 +1,49 @@
+<h2>Checkbox Required</h2>
+<p>Require at least a minimum number of checkboxes in a group to be checked before the form can be submitted.</p>
+
+<div class="demo-box">
+  <form onsubmit="event.preventDefault()">
+    <fieldset data-controller="checkbox-required">
+      <legend>Interests (select at least one)</legend>
+
+      <label>
+        <input
+          type="checkbox"
+          name="interests[]"
+          value="music"
+          data-checkbox-required-target="checkbox"
+          data-action="change->checkbox-required#validate"
+        />
+        Music
+      </label>
+      <br>
+      <label>
+        <input
+          type="checkbox"
+          name="interests[]"
+          value="sport"
+          data-checkbox-required-target="checkbox"
+          data-action="change->checkbox-required#validate"
+        />
+        Sport
+      </label>
+      <br>
+      <label>
+        <input
+          type="checkbox"
+          name="interests[]"
+          value="film"
+          data-checkbox-required-target="checkbox"
+          data-action="change->checkbox-required#validate"
+        />
+        Film
+      </label>
+
+      <p data-checkbox-required-target="error" hidden>
+        Please select at least one option.
+      </p>
+    </fieldset>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>

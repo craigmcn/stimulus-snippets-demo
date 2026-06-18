@@ -1,0 +1,22 @@
+<h2>Search Filter</h2>
+<p>Filter a list of items client-side as the user types, with an optional "no results" message.</p>
+
+<div class="demo-box" data-controller="search-filter">
+  <label for="fruit-search">Filter fruits</label>
+  <input
+    id="fruit-search"
+    type="search"
+    data-search-filter-target="input"
+    data-action="input->search-filter#filter"
+  />
+
+  <ul>
+    <li data-search-filter-target="item">Apple</li>
+    <li data-search-filter-target="item">Banana</li>
+    <li data-search-filter-target="item">Cherry</li>
+    <li data-search-filter-target="item">Date</li>
+    <li data-search-filter-target="item">Elderberry</li>
+  </ul>
+
+  <p data-search-filter-target="empty" hidden>No fruits match your search.</p>
+</div>

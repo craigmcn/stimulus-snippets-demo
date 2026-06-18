@@ -1,0 +1,59 @@
+<h2>Tabs</h2>
+<p>Show one panel at a time from a set of tab buttons, with full ARIA tablist support and arrow-key navigation.</p>
+
+<div class="demo-box" data-controller="tabs">
+  <div role="tablist" aria-label="Account settings">
+    <button type="button" data-tabs-target="tab" data-action="click->tabs#select keydown->tabs#keydown">
+      Profile
+    </button>
+    <button type="button" data-tabs-target="tab" data-action="click->tabs#select keydown->tabs#keydown">
+      Notifications
+    </button>
+    <button type="button" data-tabs-target="tab" data-action="click->tabs#select keydown->tabs#keydown">
+      Billing
+    </button>
+  </div>
+
+  <div data-tabs-target="panel">
+    <p>Update your name, email, and avatar.</p>
+    <label for="display-name">Display name</label>
+    <input id="display-name" type="text" value="Craig McNaughton" />
+  </div>
+  <div data-tabs-target="panel">
+    <p>Choose what you get notified about.</p>
+    <label><input type="checkbox" checked> Email me about new replies</label>
+    <br>
+    <label><input type="checkbox"> Email me about product updates</label>
+  </div>
+  <div data-tabs-target="panel">
+    <p>Manage your plan and payment method.</p>
+    <p>Current plan: <strong>Pro</strong> &mdash; $12/month</p>
+    <button type="button">Update payment method</button>
+  </div>
+</div>
+
+<h3>Starting on a specific tab</h3>
+<p>Set <code>data-tabs-index-value</code> to open on a tab other than the first:</p>
+<div class="demo-box" data-controller="tabs" data-tabs-index-value="2">
+  <div role="tablist" aria-label="Starts on third tab">
+    <button type="button" data-tabs-target="tab" data-action="click->tabs#select keydown->tabs#keydown">
+      Overview
+    </button>
+    <button type="button" data-tabs-target="tab" data-action="click->tabs#select keydown->tabs#keydown">
+      Activity
+    </button>
+    <button type="button" data-tabs-target="tab" data-action="click->tabs#select keydown->tabs#keydown">
+      Settings
+    </button>
+  </div>
+
+  <div data-tabs-target="panel">
+    <p>Overview content.</p>
+  </div>
+  <div data-tabs-target="panel">
+    <p>Activity content.</p>
+  </div>
+  <div data-tabs-target="panel">
+    <p>This panel (Settings) is open by default because the controller starts at index 2.</p>
+  </div>
+</div>
