@@ -16,6 +16,9 @@ application.register("checkbox-required", CheckboxRequiredController)
 import ClipboardController from "controllers/clipboard_controller"
 application.register("clipboard", ClipboardController)
 
+import DatetimeLocalController from "controllers/datetime_local_controller"
+application.register("datetime-local", DatetimeLocalController)
+
 import DependentSelectController from "controllers/dependent_select_controller"
 application.register("dependent-select", DependentSelectController)
 
