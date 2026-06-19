@@ -16,6 +16,9 @@ application.register("checkbox-required", CheckboxRequiredController)
 import ClipboardController from "controllers/clipboard_controller"
 application.register("clipboard", ClipboardController)
 
+import DependentSelectController from "controllers/dependent_select_controller"
+application.register("dependent-select", DependentSelectController)
+
 import DismissController from "controllers/dismiss_controller"
 application.register("dismiss", DismissController)
 

@@ -1,0 +1,24 @@
+<h2>Dependent Select</h2>
+<p>Filter a select's options client-side based on the value of another select (Country &rarr; State).</p>
+
+<div class="demo-box" data-controller="dependent-select">
+  <label for="country">Country</label>
+  <select
+    id="country"
+    data-dependent-select-target="group"
+    data-action="change->dependent-select#filter"
+  >
+    <option value="">Choose a country</option>
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+  </select>
+
+  <label for="state">State / Province</label>
+  <select id="state" data-dependent-select-target="dependent">
+    <option value="">Choose a state</option>
+    <option value="CA-state" data-dependent-select-group="US">California</option>
+    <option value="NY" data-dependent-select-group="US">New York</option>
+    <option value="ON" data-dependent-select-group="CA">Ontario</option>
+    <option value="QC" data-dependent-select-group="CA">Quebec</option>
+  </select>
+</div>
