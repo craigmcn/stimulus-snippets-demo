@@ -11,7 +11,7 @@ class DemosController < ApplicationController
     { id: "password-rules", title: "Password Rules" },
     { id: "search-filter", title: "Search Filter" },
     { id: "slug", title: "Slug" },
-    { id: "tabs", title: "Tabs" },
+    { id: "tabs", title: "Tabs" }
   ].freeze
 
   def index
