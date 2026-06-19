@@ -1,0 +1,42 @@
+<h2>Datetime Local</h2>
+<p>Display a server-rendered UTC timestamp in the viewer's local time zone.</p>
+
+<% utc_now = Time.now.utc.iso8601 %>
+
+<div class="demo-box">
+  <div>
+    <label>Default (date + time)</label>
+    <p>
+      <time data-controller="datetime-local" datetime="<%= utc_now %>">
+        <%= utc_now %>
+      </time>
+    </p>
+  </div>
+
+  <div>
+    <label>Date only</label>
+    <p>
+      <time
+        data-controller="datetime-local"
+        data-datetime-local-time-style-value="none"
+        datetime="<%= utc_now %>"
+      >
+        <%= utc_now %>
+      </time>
+    </p>
+  </div>
+
+  <div>
+    <label>Time only, long style</label>
+    <p>
+      <time
+        data-controller="datetime-local"
+        data-datetime-local-date-style-value="none"
+        data-datetime-local-time-style-value="long"
+        datetime="<%= utc_now %>"
+      >
+        <%= utc_now %>
+      </time>
+    </p>
+  </div>
+</div>
