@@ -4,6 +4,7 @@ class DemosController < ApplicationController
     { id: "character-count", title: "Character Count" },
     { id: "checkbox-required", title: "Checkbox Required" },
     { id: "clipboard", title: "Clipboard" },
+    { id: "dependent-select", title: "Dependent Select" },
     { id: "dismiss", title: "Dismiss" },
     { id: "file-preview", title: "File Preview" },
     { id: "form-confirm", title: "Form Confirm" },
