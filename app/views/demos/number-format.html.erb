@@ -1,0 +1,35 @@
+<h2>Number Format</h2>
+<p>Live thousands-separator and currency formatting on a text input, with a clean unformatted numeric value submitted via a hidden field.</p>
+
+<div class="demo-box" data-controller="number-format" data-number-format-locale-value="en-US">
+  <label for="quantity">Quantity</label>
+  <input
+    id="quantity"
+    name="order[quantity]"
+    type="text"
+    inputmode="decimal"
+    value="1500"
+    data-number-format-target="input"
+    data-action="input->number-format#format blur->number-format#blur focus->number-format#focus"
+  />
+</div>
+
+<div
+  class="demo-box"
+  data-controller="number-format"
+  data-number-format-locale-value="en-US"
+  data-number-format-style-value="currency"
+  data-number-format-currency-value="USD"
+>
+  <label for="price">Price</label>
+  <input
+    id="price"
+    type="text"
+    inputmode="decimal"
+    value="1234.5"
+    data-number-format-target="input"
+    data-action="input->number-format#format blur->number-format#blur focus->number-format#focus"
+  />
+  <input type="hidden" name="product[price]" data-number-format-target="hidden" />
+  <p>The visible field is for display only — the hidden <code>product[price]</code> field (inspect with devtools) carries the clean numeric value that's actually submitted.</p>
+</div>

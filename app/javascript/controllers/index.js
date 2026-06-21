@@ -31,6 +31,9 @@ application.register("file-preview", FilePreviewController)
 import FormConfirmController from "controllers/form_confirm_controller"
 application.register("form-confirm", FormConfirmController)
 
+import NumberFormatController from "controllers/number_format_controller"
+application.register("number-format", NumberFormatController)
+
 import PasswordRevealController from "controllers/password_reveal_controller"
 application.register("password-reveal", PasswordRevealController)
 
