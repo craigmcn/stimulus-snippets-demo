@@ -235,23 +235,23 @@ body {
   cursor: pointer;
 }
 
-.demo-box table th[aria-sort="none"] [data-table-sort-target="header"]::after {
-  content: "⭥";
-  margin-left: 0.4rem;
-  font-size: 0.7rem;
-  color: #a8a29e;
-}
-
 .demo-box table th[aria-sort="ascending"] [data-table-sort-target="header"]::after {
-  content: "⭡";
+  content: "▲";
   margin-left: 0.4rem;
   font-size: 0.7rem;
   color: #b45309;
 }
 
 .demo-box table th[aria-sort="descending"] [data-table-sort-target="header"]::after {
-  content: "⭣";
+  content: "▼";
   margin-left: 0.4rem;
   font-size: 0.7rem;
   color: #b45309;
+}
+
+.demo-box table caption {
+  text-align: left;
+  font-size: 0.85rem;
+  color: #6b6b6b;
+  margin-bottom: 0.5rem;
 }
