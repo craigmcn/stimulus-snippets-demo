@@ -14,6 +14,7 @@ class DemosController < ApplicationController
     { id: "password-rules", title: "Password Rules" },
     { id: "search-filter", title: "Search Filter" },
     { id: "slug", title: "Slug" },
+    { id: "table-sort", title: "Table Sort" },
     { id: "tabs", title: "Tabs" }
   ].freeze
 

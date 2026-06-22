@@ -46,5 +46,8 @@ application.register("search-filter", SearchFilterController)
 import SlugController from "controllers/slug_controller"
 application.register("slug", SlugController)
 
+import TableSortController from "controllers/table_sort_controller"
+application.register("table-sort", TableSortController)
+
 import TabsController from "controllers/tabs_controller"
 application.register("tabs", TabsController)

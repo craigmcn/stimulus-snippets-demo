@@ -75,3 +75,15 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   with "D" (demo) instead of "S". `public/icon.png` is regenerated from
   `public/icon.svg` via `rsvg-convert` so the PNG fallback/apple-touch-icon
   stay visually consistent — re-run that conversion if the SVG changes.
+
+## Progress (as of 2026-06-21)
+
+- **All 16 stimulus-snippets controllers now have demos** — PRs #4–#6 added
+  dependent-select, datetime-local, and number-format; a later pass added
+  table-sort, bringing `DemosController::DEMOS` to parity with every
+  directory in `stimulus-snippets/components/`. Each was verified live in a
+  real browser via Playwright before merging (per the "look at and click"
+  purpose of this app), not just rendered.
+- **No outstanding TODOs or open questions** — working tree is clean, no demo
+  gaps remain. Next work here will only start when a new controller is added
+  to the source `stimulus-snippets` repo.

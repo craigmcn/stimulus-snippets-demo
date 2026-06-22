@@ -1,0 +1,55 @@
+<h2>Table Sort</h2>
+<p>Click a column header to sort a table's rows by that column, with automatic string/number/date type detection.</p>
+
+<div class="demo-box" data-controller="table-sort">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">
+          <button
+            type="button"
+            data-table-sort-target="header"
+            data-action="click->table-sort#sort"
+          >
+            Name
+          </button>
+        </th>
+        <th scope="col">
+          <button
+            type="button"
+            data-table-sort-target="header"
+            data-action="click->table-sort#sort"
+          >
+            Age
+          </button>
+        </th>
+        <th scope="col">
+          <button
+            type="button"
+            data-table-sort-target="header"
+            data-action="click->table-sort#sort"
+          >
+            Joined
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-table-sort-target="row">
+        <td>Charlie</td>
+        <td>40</td>
+        <td>2022-03-14</td>
+      </tr>
+      <tr data-table-sort-target="row">
+        <td>Alice</td>
+        <td>30</td>
+        <td>2024-11-02</td>
+      </tr>
+      <tr data-table-sort-target="row">
+        <td>Bob</td>
+        <td>25</td>
+        <td>2023-07-19</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
