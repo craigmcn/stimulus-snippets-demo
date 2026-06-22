@@ -75,3 +75,37 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   with "D" (demo) instead of "S". `public/icon.png` is regenerated from
   `public/icon.svg` via `rsvg-convert` so the PNG fallback/apple-touch-icon
   stay visually consistent — re-run that conversion if the SVG changes.
+- **`Intl.Collator({ numeric: true })` neutralizes string-vs-number sort type
+  for purely numeric content** — table-sort's controller compares "string"
+  type with a numeric-aware collator, so a column of pure digit strings
+  sorts identically whether typed as `"string"` or `"number"`. A visible
+  `data-table-sort-type` override demo only works with content that the
+  browser's loose `Date.parse` misreads (e.g. `"3-15-24"`, a non-ISO,
+  non-date batch code) — pure numbers can't show the distinction.
+- **Sort affordance: text caption beats icon glyphs** — tried Unicode
+  triangle-headed arrows (`⭡`/`⭣`) plus a muted `⭥` on unsorted columns to
+  signal sortability; not obvious enough. Reverted to the simpler `▲`/`▼`
+  (shown only once a column is actively sorted) and added a `<caption>`
+  stating "Click a column header to sort by that column." instead — explicit
+  text over icon-only affordance for a one-off demo page.
+- **No Playwright install lives in this repo** (no JS test suite by design,
+  see "What this is" above) — verification of JS-driven demos (table-sort's
+  sort behavior, glyph states) is done with a throwaway
+  `npm install playwright` in `/tmp` per session, screenshotted and diffed
+  manually. Don't expect a persistent `node_modules` for this.
+
+## Progress (as of 2026-06-22)
+
+- **All 16 stimulus-snippets controllers now have demos** — PRs #4–#6 added
+  dependent-select, datetime-local, and number-format; table-sort followed
+  in PR #7 (open, not yet merged), bringing `DemosController::DEMOS` to
+  parity with every directory in `stimulus-snippets/components/`.
+- **table-sort demo (PR #7) has two tables**: a basic 3-column demo (string/
+  number/date auto-detection) and an "advanced" table exercising
+  `data-table-sort-type` (string override on date-shaped-but-not-dates batch
+  codes) and `data-table-sort-value` (sorting displayed month names by a
+  hidden numeric key). Both verified live via Playwright — actual row
+  reordering and `aria-sort` state checked, not just rendered.
+- **Next**: merge PR #7 when ready. No other outstanding TODOs — next work
+  here only starts when a new controller is added to the source
+  `stimulus-snippets` repo.
