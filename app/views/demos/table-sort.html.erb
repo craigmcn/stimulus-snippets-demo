@@ -53,3 +53,68 @@
     </tbody>
   </table>
 </div>
+
+<h3>Type override and custom sort value</h3>
+<p>
+  <code>Batch</code> codes look like dates (<code>M-D-YY</code>) but aren't —
+  without an override the browser would misread them as calendar dates and
+  sort chronologically. <code>data-table-sort-type="string"</code> on the
+  header forces a plain text comparison instead. <code>Released</code> shows
+  a month name but sorts by a hidden numeric month number supplied via
+  <code>data-table-sort-value</code> on each cell, so it sorts chronologically
+  even though the displayed text wouldn't.
+</p>
+
+<div class="demo-box" data-controller="table-sort">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">
+          <button
+            type="button"
+            data-table-sort-target="header"
+            data-action="click->table-sort#sort"
+          >
+            Item
+          </button>
+        </th>
+        <th scope="col">
+          <button
+            type="button"
+            data-table-sort-target="header"
+            data-table-sort-type="string"
+            data-action="click->table-sort#sort"
+          >
+            Batch
+          </button>
+        </th>
+        <th scope="col">
+          <button
+            type="button"
+            data-table-sort-target="header"
+            data-action="click->table-sort#sort"
+          >
+            Released
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-table-sort-target="row">
+        <td>Widget A</td>
+        <td>3-15-24</td>
+        <td data-table-sort-value="3">March</td>
+      </tr>
+      <tr data-table-sort-target="row">
+        <td>Widget B</td>
+        <td>11-2-23</td>
+        <td data-table-sort-value="11">November</td>
+      </tr>
+      <tr data-table-sort-target="row">
+        <td>Widget C</td>
+        <td>8-9-24</td>
+        <td data-table-sort-value="8">August</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
