@@ -1,0 +1,106 @@
+<h2>Row Select</h2>
+<p>Select table rows with checkboxes — select-all, shift-click range select, and a bulk-actions bar that appears once anything is selected.</p>
+
+<div class="demo-box" data-controller="row-select">
+  <div data-row-select-target="bar" hidden>
+    <strong><span data-row-select-target="count"></span> selected</strong>
+    <button
+      type="button"
+      onclick="this.closest('[data-controller=row-select]').querySelectorAll('[data-row-select-target=row]:checked').forEach((cb) => cb.closest('tr').remove()); this.closest('[data-row-select-target=bar]').hidden = true;"
+    >
+      Delete selected
+    </button>
+  </div>
+
+  <table>
+    <caption>
+      Click a row checkbox to select it, shift-click another to select the
+      range between them, or use the header checkbox to select all.
+    </caption>
+    <thead>
+      <tr>
+        <th>
+          <input
+            type="checkbox"
+            data-row-select-target="all"
+            data-action="change->row-select#toggleAll"
+            aria-label="Select all rows"
+          />
+        </th>
+        <th scope="col">Name</th>
+        <th scope="col">Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <input
+            type="checkbox"
+            data-row-select-target="row"
+            data-action="click->row-select#toggle"
+            aria-label="Select Alice"
+          />
+        </td>
+        <td>Alice</td>
+        <td>Engineer</td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="checkbox"
+            data-row-select-target="row"
+            data-action="click->row-select#toggle"
+            aria-label="Select Bob"
+          />
+        </td>
+        <td>Bob</td>
+        <td>Designer</td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="checkbox"
+            data-row-select-target="row"
+            data-action="click->row-select#toggle"
+            aria-label="Select Charlie"
+          />
+        </td>
+        <td>Charlie</td>
+        <td>Product Manager</td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="checkbox"
+            data-row-select-target="row"
+            data-action="click->row-select#toggle"
+            aria-label="Select Dana"
+          />
+        </td>
+        <td>Dana</td>
+        <td>Engineer</td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="checkbox"
+            data-row-select-target="row"
+            data-action="click->row-select#toggle"
+            aria-label="Select Erin"
+          />
+        </td>
+        <td>Erin</td>
+        <td>Support</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+  "Delete selected" removes the checked rows directly from the page (this app
+  has no database, so there's nothing to persist) — similar to how a Rails
+  app might remove rows via a Turbo Stream after a real bulk-delete action.
+  Selecting a row, deleting it, then shift-clicking another row afterward
+  exercises the fix for a stale range anchor after a row disappears from
+  under the controller.
+</p>

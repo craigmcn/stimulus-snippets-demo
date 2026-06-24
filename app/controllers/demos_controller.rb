@@ -12,6 +12,7 @@ class DemosController < ApplicationController
     { id: "number-format", title: "Number Format" },
     { id: "password-reveal", title: "Password Reveal" },
     { id: "password-rules", title: "Password Rules" },
+    { id: "row-select", title: "Row Select" },
     { id: "search-filter", title: "Search Filter" },
     { id: "slug", title: "Slug" },
     { id: "table-sort", title: "Table Sort" },
