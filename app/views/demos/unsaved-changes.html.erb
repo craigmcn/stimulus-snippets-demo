@@ -1,0 +1,28 @@
+<h2>Unsaved Changes</h2>
+<p>Warn before navigating away from a form with unsaved edits.</p>
+
+<div class="demo-box">
+  <form data-controller="unsaved-changes" data-unsaved-changes-message-value="Discard your edits?">
+    <label for="unsaved-changes-title">Title</label>
+    <input id="unsaved-changes-title" type="text" name="title">
+
+    <button type="submit">Save</button>
+  </form>
+</div>
+
+<p>
+  Type something in the field above, then click any sidebar link (a
+  Turbo Drive visit) without clicking "Save" first — a confirmation dialog
+  appears, and declining it keeps you on this page. Clicking "Save" (or
+  typing nothing) lets you navigate away without a prompt. This app has no
+  database, so "Save" doesn't persist anything; it only demonstrates that
+  submitting clears the unsaved-edits guard.
+</p>
+
+<p>
+  Closing the tab or typing a new URL into the address bar while the field
+  is dirty triggers the browser's own native <code>beforeunload</code>
+  dialog instead — that one can't be demonstrated from within the page
+  itself, since browsers require the navigation to be a real, user-initiated
+  one (a script-triggered reload won't show it).
+</p>

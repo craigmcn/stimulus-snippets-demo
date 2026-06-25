@@ -16,7 +16,8 @@ class DemosController < ApplicationController
     { id: "search-filter", title: "Search Filter" },
     { id: "slug", title: "Slug" },
     { id: "table-sort", title: "Table Sort" },
-    { id: "tabs", title: "Tabs" }
+    { id: "tabs", title: "Tabs" },
+    { id: "unsaved-changes", title: "Unsaved Changes" }
   ].freeze
 
   def index

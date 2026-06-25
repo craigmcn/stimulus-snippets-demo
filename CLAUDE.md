@@ -94,18 +94,28 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   `npm install playwright` in `/tmp` per session, screenshotted and diffed
   manually. Don't expect a persistent `node_modules` for this.
 
-## Progress (as of 2026-06-22)
+## Progress (as of 2026-06-25)
 
-- **All 16 stimulus-snippets controllers now have demos** — PRs #4–#6 added
-  dependent-select, datetime-local, and number-format; table-sort followed
-  in PR #7 (open, not yet merged), bringing `DemosController::DEMOS` to
-  parity with every directory in `stimulus-snippets/components/`.
+- **All 16 stimulus-snippets controllers from the previous batch have demos** — PRs #4–#7 added
+  dependent-select, datetime-local, number-format, and table-sort.
 - **table-sort demo (PR #7) has two tables**: a basic 3-column demo (string/
   number/date auto-detection) and an "advanced" table exercising
   `data-table-sort-type` (string override on date-shaped-but-not-dates batch
   codes) and `data-table-sort-value` (sorting displayed month names by a
   hidden numeric key). Both verified live via Playwright — actual row
   reordering and `aria-sort` state checked, not just rendered.
-- **Next**: merge PR #7 when ready. No other outstanding TODOs — next work
-  here only starts when a new controller is added to the source
-  `stimulus-snippets` repo.
+- **row-select demo (PR #8, merged)** — a 5-row table whose "Delete selected"
+  button removes checked rows directly from the page (no DB to persist
+  against). Verified live via Playwright: range select, delete, and a
+  post-delete shift-click all behaved correctly with zero console errors.
+- **unsaved-changes demo (this branch)** — a single-field form; the page
+  text instructs clicking a sidebar link (a Turbo Drive visit) without
+  saving first to trigger the confirmation prompt, and explains that the
+  native `beforeunload` dialog can't be demonstrated from within the page
+  itself (browsers only show it for a real, user-initiated navigation, not
+  a script-triggered one). Verified live via Playwright with `page.on("dialog")`:
+  declining the prompt keeps you on the page, accepting it navigates away,
+  and clicking "Save" first clears the guard with no prompt at all — zero
+  console errors in all three cases.
+- **Next**: no outstanding TODOs — next work here only starts when a new
+  controller is added to the source `stimulus-snippets` repo.
