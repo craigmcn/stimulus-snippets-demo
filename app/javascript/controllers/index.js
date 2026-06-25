@@ -40,6 +40,9 @@ application.register("password-reveal", PasswordRevealController)
 import PasswordRulesController from "controllers/password_rules_controller"
 application.register("password-rules", PasswordRulesController)
 
+import RelativeTimeController from "controllers/relative_time_controller"
+application.register("relative-time", RelativeTimeController)
+
 import RowSelectController from "controllers/row_select_controller"
 application.register("row-select", RowSelectController)
 

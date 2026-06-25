@@ -108,7 +108,7 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   button removes checked rows directly from the page (no DB to persist
   against). Verified live via Playwright: range select, delete, and a
   post-delete shift-click all behaved correctly with zero console errors.
-- **unsaved-changes demo (this branch)** — a single-field form; the page
+- **unsaved-changes demo (PR #10, merged)** — a single-field form; the page
   text instructs clicking a sidebar link (a Turbo Drive visit) without
   saving first to trigger the confirmation prompt, and explains that the
   native `beforeunload` dialog can't be demonstrated from within the page
@@ -117,5 +117,14 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   declining the prompt keeps you on the page, accepting it navigates away,
   and clicking "Save" first clears the guard with no prompt at all — zero
   console errors in all three cases.
+- **relative-time demo (this branch)** — four `<time>` elements covering a
+  past timestamp, a future timestamp, the `numeric: "always"` override
+  (forces "1 day ago" instead of "yesterday"), and a 5-second `interval`
+  override for a live-feed-style re-render. All four datetimes are computed
+  from `Time.now` in the view so the demo stays meaningful regardless of
+  when it's loaded, rather than hardcoded ISO strings that would drift into
+  nonsensical relative phrasing over time. Verified live via Playwright:
+  text content, `aria-live="polite"`, and zero console errors checked across
+  all four elements.
 - **Next**: no outstanding TODOs — next work here only starts when a new
   controller is added to the source `stimulus-snippets` repo.

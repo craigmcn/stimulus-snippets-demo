@@ -1,0 +1,50 @@
+<h2>Relative Time</h2>
+<p>Display a server-rendered timestamp as a live-updating "5 minutes ago" style relative time.</p>
+
+<div class="demo-box">
+  <p>
+    Posted
+    <time data-controller="relative-time" datetime="<%= 5.minutes.ago.utc.iso8601 %>">
+      <%= 5.minutes.ago.utc.iso8601 %>
+    </time>
+  </p>
+
+  <p>
+    Due
+    <time data-controller="relative-time" datetime="<%= 2.days.from_now.utc.iso8601 %>">
+      <%= 2.days.from_now.utc.iso8601 %>
+    </time>
+  </p>
+
+  <p>
+    Forced numeric phrasing ("1 day ago" instead of "yesterday"):
+    <time
+      data-controller="relative-time"
+      data-relative-time-numeric-value="always"
+      datetime="<%= 1.day.ago.utc.iso8601 %>"
+    >
+      <%= 1.day.ago.utc.iso8601 %>
+    </time>
+  </p>
+
+  <p>
+    Re-rendering every 5 seconds:
+    <time
+      data-controller="relative-time"
+      data-relative-time-interval-value="5000"
+      datetime="<%= 30.seconds.ago.utc.iso8601 %>"
+    >
+      <%= 30.seconds.ago.utc.iso8601 %>
+    </time>
+  </p>
+</div>
+
+<p>
+  On connect, the controller replaces each element's text content with a
+  relative description and re-renders it on an interval (one minute by
+  default) so it stays current without a page reload. The
+  <code>datetime</code> attribute itself is left untouched, so the element
+  stays machine-readable, and <code>aria-live="polite"</code> is applied
+  automatically so assistive technology announces updates without
+  interrupting the user.
+</p>
