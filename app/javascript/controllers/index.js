@@ -40,6 +40,9 @@ application.register("password-reveal", PasswordRevealController)
 import PasswordRulesController from "controllers/password_rules_controller"
 application.register("password-rules", PasswordRulesController)
 
+import RowSelectController from "controllers/row_select_controller"
+application.register("row-select", RowSelectController)
+
 import SearchFilterController from "controllers/search_filter_controller"
 application.register("search-filter", SearchFilterController)
 
