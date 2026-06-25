@@ -54,3 +54,6 @@ application.register("table-sort", TableSortController)
 
 import TabsController from "controllers/tabs_controller"
 application.register("tabs", TabsController)
+
+import UnsavedChangesController from "controllers/unsaved_changes_controller"
+application.register("unsaved-changes", UnsavedChangesController)
