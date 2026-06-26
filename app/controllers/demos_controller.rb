@@ -9,6 +9,7 @@ class DemosController < ApplicationController
     { id: "dismiss", title: "Dismiss" },
     { id: "file-preview", title: "File Preview" },
     { id: "form-confirm", title: "Form Confirm" },
+    { id: "match-validator", title: "Match Validator" },
     { id: "number-format", title: "Number Format" },
     { id: "password-reveal", title: "Password Reveal" },
     { id: "password-rules", title: "Password Rules" },

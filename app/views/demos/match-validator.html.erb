@@ -1,0 +1,65 @@
+<h2>Match Validator</h2>
+<p>Require two fields to have the same value before the form can be submitted — password confirmation, email confirmation, and similar "type it again" patterns.</p>
+
+<div class="demo-box">
+  <form onsubmit="event.preventDefault()">
+    <div data-controller="match-validator">
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        name="user[password]"
+        autocomplete="new-password"
+        data-match-validator-target="field"
+        data-action="input->match-validator#validate"
+      />
+      <br>
+
+      <label for="password_confirmation">Confirm password</label>
+      <input
+        id="password_confirmation"
+        type="password"
+        name="user[password_confirmation]"
+        autocomplete="new-password"
+        data-match-validator-target="match"
+        data-action="input->match-validator#validate"
+      />
+
+      <p data-match-validator-target="error" hidden>Passwords don't match.</p>
+    </div>
+
+    <button type="submit">Sign up</button>
+  </form>
+</div>
+
+<h3>Case-insensitive match</h3>
+<p>Set <code>data-match-validator-case-sensitive-value="false"</code> to ignore letter case — useful for email confirmation, where "Name@Example.com" and "name@example.com" should be treated as the same address.</p>
+
+<div class="demo-box">
+  <form onsubmit="event.preventDefault()">
+    <div data-controller="match-validator" data-match-validator-case-sensitive-value="false">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        name="user[email]"
+        data-match-validator-target="field"
+        data-action="input->match-validator#validate"
+      />
+      <br>
+
+      <label for="email_confirmation">Confirm email</label>
+      <input
+        id="email_confirmation"
+        type="email"
+        name="user[email_confirmation]"
+        data-match-validator-target="match"
+        data-action="input->match-validator#validate"
+      />
+
+      <p data-match-validator-target="error" hidden>Emails don't match.</p>
+    </div>
+
+    <button type="submit">Sign up</button>
+  </form>
+</div>
