@@ -150,15 +150,23 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   both; the case-insensitive example treats `Name@Example.com` /
   `name@example.com` as a match but still flags a genuine mismatch; zero console
   errors across all checks.
-- **direct-upload-progress demo (this branch)** — a file input wired to a
-  demo-only fake-ActiveStorage simulator (see Key decisions above) that
-  dispatches `direct-upload:*` events on a fake timer, since this app has
-  no database to run real ActiveStorage direct uploads against. Selecting
-  files renders one `<li>` per file with a native `<progress>` bar; a
-  filename containing "fail" deterministically exercises the error-state
-  path. Verified live via Playwright: a 2-file selection (one normal, one
-  named to fail) ended with one item in `done` state at 100% progress and
-  one in `error` state, correct `aria-label`s, `aria-live="polite"` status
-  text, and zero console errors.
+- **direct-upload-progress demo (this branch)** — two examples. The first is
+  a file input wired to a demo-only fake-ActiveStorage simulator (see Key
+  decisions above) that dispatches `direct-upload:*` events on a fake
+  timer, since this app has no database to run real ActiveStorage direct
+  uploads against. Selecting files renders one `<li>` per file with a
+  native `<progress>` bar; a filename containing "fail" deterministically
+  exercises the error-state path. The second example adds `file-preview` on
+  the same input to show a more realistic form (thumbnail/filename preview
+  alongside upload progress) — the two controllers don't reference each
+  other, they both just react to events on the shared input; `file-preview`'s
+  `change` action must come before the simulator's in the `data-action` list
+  so it reads `input.files` before the simulator clears the value. Verified
+  live via Playwright on both examples: file-preview renders an image
+  thumbnail + a non-image filename/size item immediately on selection,
+  upload simulation independently ends with one `done` item at 100% and one
+  `error` item, the preview's `Clear` button resets only the preview list
+  (upload list untouched, since it's a separate controller instance with no
+  knowledge of `file-preview`), and zero console errors throughout.
 - **Next**: no outstanding TODOs — next work here only starts when a new
   controller is added to the source `stimulus-snippets` repo.
