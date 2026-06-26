@@ -6,6 +6,7 @@ class DemosController < ApplicationController
     { id: "clipboard", title: "Clipboard" },
     { id: "datetime-local", title: "Datetime Local" },
     { id: "dependent-select", title: "Dependent Select" },
+    { id: "direct-upload-progress", title: "Direct Upload Progress" },
     { id: "dismiss", title: "Dismiss" },
     { id: "file-preview", title: "File Preview" },
     { id: "form-confirm", title: "Form Confirm" },

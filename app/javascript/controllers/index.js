@@ -19,8 +19,14 @@ application.register("clipboard", ClipboardController)
 import DatetimeLocalController from "controllers/datetime_local_controller"
 application.register("datetime-local", DatetimeLocalController)
 
+import DemoDirectUploadController from "controllers/demo_direct_upload_controller"
+application.register("demo-direct-upload", DemoDirectUploadController)
+
 import DependentSelectController from "controllers/dependent_select_controller"
 application.register("dependent-select", DependentSelectController)
+
+import DirectUploadProgressController from "controllers/direct_upload_progress_controller"
+application.register("direct-upload-progress", DirectUploadProgressController)
 
 import DismissController from "controllers/dismiss_controller"
 application.register("dismiss", DismissController)

@@ -1,0 +1,68 @@
+<h2>Direct Upload Progress</h2>
+<p>Show a progress bar for each file as it uploads via Rails ActiveStorage direct uploads.</p>
+
+<p>
+  This app has no database (<code>--skip-active-record</code>), so there's no
+  real ActiveStorage to upload to. The file input below is wired to a
+  demo-only <code>demo-direct-upload</code> controller that dispatches the
+  same <code>direct-upload:*</code> events ActiveStorage's own JS would
+  dispatch on a real upload, on a fake timer, so you can see
+  direct-upload-progress render without a backend. Pick a file whose name
+  contains "fail" (e.g. <code>fail.txt</code>) to see the error state.
+</p>
+
+<div class="demo-box" data-controller="demo-direct-upload direct-upload-progress">
+  <label for="attachments">Attachments</label>
+  <input
+    id="attachments"
+    type="file"
+    multiple
+    data-demo-direct-upload-target="input"
+    data-action="
+      change->demo-direct-upload#start
+      direct-upload:initialize->direct-upload-progress#add
+      direct-upload:progress->direct-upload-progress#progress
+      direct-upload:error->direct-upload-progress#error
+      direct-upload:end->direct-upload-progress#end
+    "
+  />
+
+  <ul data-direct-upload-progress-target="list"></ul>
+  <p data-direct-upload-progress-target="status"></p>
+</div>
+
+<h3>With file-preview</h3>
+<p>
+  A more realistic upload form: <code>file-preview</code> shows a thumbnail
+  (or filename/size) for each selected file immediately, while
+  <code>direct-upload-progress</code> tracks the upload itself — the two
+  controllers don't know about each other, they just both react to events
+  on the same file input.
+</p>
+
+<div class="demo-box" data-controller="demo-direct-upload direct-upload-progress file-preview">
+  <label for="attachments-with-preview">Attachments</label>
+  <input
+    id="attachments-with-preview"
+    type="file"
+    multiple
+    data-demo-direct-upload-target="input"
+    data-file-preview-target="input"
+    data-action="
+      change->file-preview#preview
+      change->demo-direct-upload#start
+      direct-upload:initialize->direct-upload-progress#add
+      direct-upload:progress->direct-upload-progress#progress
+      direct-upload:error->direct-upload-progress#error
+      direct-upload:end->direct-upload-progress#end
+    "
+  />
+
+  <p><button type="button" class="secondary" data-action="file-preview#clear">Clear</button></p>
+
+  <ul data-file-preview-target="list"></ul>
+  <p data-file-preview-target="empty">No files chosen.</p>
+
+  <ul data-direct-upload-progress-target="list"></ul>
+  <p data-direct-upload-progress-target="status"></p>
+</div>

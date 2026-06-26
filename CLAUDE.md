@@ -93,6 +93,22 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   sort behavior, glyph states) is done with a throwaway
   `npm install playwright` in `/tmp` per session, screenshotted and diffed
   manually. Don't expect a persistent `node_modules` for this.
+- **direct-upload-progress demo needs a fake ActiveStorage** — the source
+  controller only listens for `direct-upload:*` custom events that
+  ActiveStorage's own direct-upload JS normally dispatches on the file
+  input; this app has no database (`--skip-active-record`), so there's
+  nothing to upload to. Added a demo-only `demo_direct_upload_controller.js`
+  (not from the source repo) that dispatches the same events on a fake
+  timer when a file is selected, so the real controller's rendering can be
+  exercised. Both controllers share one element (`data-controller=
+  "demo-direct-upload direct-upload-progress"`) since Stimulus actions only
+  resolve against controllers in scope on the action element's ancestors —
+  putting them on separate nested elements silently no-ops the action.
+  Picking a filename containing "fail" deterministically triggers the
+  error-state path. This pattern (a demo-only simulator controller) is the
+  template for any future controller whose events come from a Rails-side
+  integration (ActiveStorage, ActionCable, etc.) this no-DB app can't run
+  for real.
 
 ## Progress (as of 2026-06-25)
 
@@ -126,7 +142,7 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   nonsensical relative phrasing over time. Verified live via Playwright:
   text content, `aria-live="polite"`, and zero console errors checked across
   all four elements.
-- **match-validator demo (this branch)** — two examples: a password/confirm-password
+- **match-validator demo (PR #12, merged)** — two examples: a password/confirm-password
   pair (default case-sensitive comparison) and an email/confirm-email pair with
   `data-match-validator-case-sensitive-value="false"` to demonstrate the
   case-insensitive mode. Verified live via Playwright: mismatch shows the error
@@ -134,5 +150,23 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   both; the case-insensitive example treats `Name@Example.com` /
   `name@example.com` as a match but still flags a genuine mismatch; zero console
   errors across all checks.
+- **direct-upload-progress demo (this branch)** — two examples. The first is
+  a file input wired to a demo-only fake-ActiveStorage simulator (see Key
+  decisions above) that dispatches `direct-upload:*` events on a fake
+  timer, since this app has no database to run real ActiveStorage direct
+  uploads against. Selecting files renders one `<li>` per file with a
+  native `<progress>` bar; a filename containing "fail" deterministically
+  exercises the error-state path. The second example adds `file-preview` on
+  the same input to show a more realistic form (thumbnail/filename preview
+  alongside upload progress) — the two controllers don't reference each
+  other, they both just react to events on the shared input; `file-preview`'s
+  `change` action must come before the simulator's in the `data-action` list
+  so it reads `input.files` before the simulator clears the value. Verified
+  live via Playwright on both examples: file-preview renders an image
+  thumbnail + a non-image filename/size item immediately on selection,
+  upload simulation independently ends with one `done` item at 100% and one
+  `error` item, the preview's `Clear` button resets only the preview list
+  (upload list untouched, since it's a separate controller instance with no
+  knowledge of `file-preview`), and zero console errors throughout.
 - **Next**: no outstanding TODOs — next work here only starts when a new
   controller is added to the source `stimulus-snippets` repo.

@@ -255,3 +255,18 @@ body {
   color: #6b6b6b;
   margin-bottom: 0.5rem;
 }
+
+[data-direct-upload-progress-target="list"] li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+[data-direct-upload-progress-state="error"] {
+  color: #b91c1c;
+}
+
+[data-direct-upload-progress-state="done"] {
+  color: #15803d;
+}
