@@ -117,7 +117,7 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   declining the prompt keeps you on the page, accepting it navigates away,
   and clicking "Save" first clears the guard with no prompt at all — zero
   console errors in all three cases.
-- **relative-time demo (this branch)** — four `<time>` elements covering a
+- **relative-time demo (PR #11, merged)** — four `<time>` elements covering a
   past timestamp, a future timestamp, the `numeric: "always"` override
   (forces "1 day ago" instead of "yesterday"), and a 5-second `interval`
   override for a live-feed-style re-render. All four datetimes are computed
@@ -126,5 +126,13 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   nonsensical relative phrasing over time. Verified live via Playwright:
   text content, `aria-live="polite"`, and zero console errors checked across
   all four elements.
+- **match-validator demo (this branch)** — two examples: a password/confirm-password
+  pair (default case-sensitive comparison) and an email/confirm-email pair with
+  `data-match-validator-case-sensitive-value="false"` to demonstrate the
+  case-insensitive mode. Verified live via Playwright: mismatch shows the error
+  text and sets `aria-invalid="true"` on the confirmation field, fixing it clears
+  both; the case-insensitive example treats `Name@Example.com` /
+  `name@example.com` as a match but still flags a genuine mismatch; zero console
+  errors across all checks.
 - **Next**: no outstanding TODOs — next work here only starts when a new
   controller is added to the source `stimulus-snippets` repo.

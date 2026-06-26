@@ -31,6 +31,9 @@ application.register("file-preview", FilePreviewController)
 import FormConfirmController from "controllers/form_confirm_controller"
 application.register("form-confirm", FormConfirmController)
 
+import MatchValidatorController from "controllers/match_validator_controller"
+application.register("match-validator", MatchValidatorController)
+
 import NumberFormatController from "controllers/number_format_controller"
 application.register("number-format", NumberFormatController)
 
