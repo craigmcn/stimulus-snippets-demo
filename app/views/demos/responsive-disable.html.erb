@@ -1,0 +1,26 @@
+<h2>Responsive Disable</h2>
+<p>Disables a form field while it's hidden by responsive CSS — here, a plain <code>@media (max-width: 700px)</code> rule — so it isn't submitted, and re-enables it once visible again.</p>
+<p><strong>Resize your browser window narrower than 700px</strong> (or open dev tools' device toolbar) to hide the promo code field below, then submit the form. The output shows exactly what was submitted — with the promo code missing once the field is hidden.</p>
+
+<div class="demo-box" data-controller="demo-form-data">
+  <form data-action="submit->demo-form-data#show">
+    <label for="name">Name</label>
+    <input id="name" type="text" name="user[name]" value="Ada Lovelace" />
+    <br>
+
+    <div class="responsive-disable-field">
+      <label for="promo">Promo code <small>(hidden below 700px)</small></label>
+      <input
+        id="promo"
+        type="text"
+        name="user[promo_code]"
+        value="WELCOME10"
+        data-controller="responsive-disable"
+      />
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <pre class="responsive-disable-output" data-demo-form-data-target="output">Submit the form to see the encoded data here.</pre>
+</div>

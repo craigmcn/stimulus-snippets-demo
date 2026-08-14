@@ -22,6 +22,9 @@ application.register("datetime-local", DatetimeLocalController)
 import DemoDirectUploadController from "controllers/demo_direct_upload_controller"
 application.register("demo-direct-upload", DemoDirectUploadController)
 
+import DemoFormDataController from "controllers/demo_form_data_controller"
+application.register("demo-form-data", DemoFormDataController)
+
 import DependentSelectController from "controllers/dependent_select_controller"
 application.register("dependent-select", DependentSelectController)
 
@@ -51,6 +54,9 @@ application.register("password-rules", PasswordRulesController)
 
 import RelativeTimeController from "controllers/relative_time_controller"
 application.register("relative-time", RelativeTimeController)
+
+import ResponsiveDisableController from "controllers/responsive_disable_controller"
+application.register("responsive-disable", ResponsiveDisableController)
 
 import RowSelectController from "controllers/row_select_controller"
 application.register("row-select", RowSelectController)

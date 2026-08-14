@@ -168,5 +168,23 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   `error` item, the preview's `Clear` button resets only the preview list
   (upload list untouched, since it's a separate controller instance with no
   knowledge of `file-preview`), and zero console errors throughout.
+- **responsive-disable demo (this branch)** — a form with a `promo_code`
+  field hidden below 700px width by a plain `@media` rule (no Bootstrap/
+  Tailwind dependency added to this minimal app, consistent with the "no
+  demo-box CSS framework" decision above; the source README documents that
+  plain media queries work identically to utility classes). Submitting the
+  form renders the actual `FormData` key/value pairs on the page via a new
+  demo-only `demo_form_data_controller.js`, so the controller's core promise
+  ("the hidden field isn't submitted") is directly visible rather than
+  requiring the visitor to trust that the browser skipped a disabled field.
+  First draft put `data-controller="demo-form-data"` on the `<form>` with the
+  output `<pre>` as its sibling outside the form — silently broken (`Missing
+  target element "output"`), the same "controller wraps its own element only"
+  mistake `row-select`'s Key decisions section already warns about, caught
+  live via Playwright rather than assumed working. Fixed by moving
+  `data-controller` up to the shared `.demo-box` wrapper. Verified live via
+  Playwright at two viewport widths: 900px shows the promo field and includes
+  `user[promo_code]` in the submitted output; 500px hides the field and the
+  submitted output has only `user[name]`. Zero console errors in both cases.
 - **Next**: no outstanding TODOs — next work here only starts when a new
   controller is added to the source `stimulus-snippets` repo.

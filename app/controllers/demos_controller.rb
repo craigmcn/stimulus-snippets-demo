@@ -15,6 +15,7 @@ class DemosController < ApplicationController
     { id: "password-reveal", title: "Password Reveal" },
     { id: "password-rules", title: "Password Rules" },
     { id: "relative-time", title: "Relative Time" },
+    { id: "responsive-disable", title: "Responsive Disable" },
     { id: "row-select", title: "Row Select" },
     { id: "search-filter", title: "Search Filter" },
     { id: "slug", title: "Slug" },
