@@ -8,14 +8,14 @@
     <input id="name" type="text" name="user[name]" value="Ada Lovelace" />
     <br>
 
-    <div class="responsive-disable-field">
+    <div class="responsive-disable-field" data-controller="responsive-disable">
       <label for="promo">Promo code <small>(hidden below 700px)</small></label>
       <input
         id="promo"
         type="text"
         name="user[promo_code]"
         value="WELCOME10"
-        data-controller="responsive-disable"
+        data-responsive-disable-target="field"
       />
     </div>
 

@@ -109,6 +109,25 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   template for any future controller whose events come from a Rails-side
   integration (ActiveStorage, ActionCable, etc.) this no-DB app can't run
   for real.
+- **responsive-disable's visibility walk now stops at the controller's own
+  element** — an upstream fix (source repo PR #30/#31) scoped `_isHidden` to
+  stop climbing ancestors once it reaches `this.element`, so a controller
+  placed directly on the `<input>` can no longer see a hiding class on a
+  wrapper `<div>` around it. The demo originally put `data-controller` on
+  the input while `@media` hid the wrapper — worked under the old
+  unbounded-walk behavior, silently broken under the new one (field just
+  stayed enabled at any width). Fixed by moving `data-controller=
+  "responsive-disable"` to the wrapper `<div class="responsive-disable-
+  field">` and adding `data-responsive-disable-target="field"` on the
+  input, matching the source README's "wrapper" pattern. Caught by copying
+  the controller update over from the source repo and re-verifying live
+  with Playwright rather than assuming an unrelated-looking upstream fix
+  couldn't affect this app's markup — resize-to-hide, submit, and
+  resize-back-to-visible all checked with zero console errors before and
+  after. The same upstream change also added a 150ms debounce on the
+  `resize` handler (overridable via a `delay` value) and same-name-field
+  sync via an `input` listener; this demo doesn't use a same-name field
+  pair, so only the debounce and scoping behavior needed verifying here.
 
 ## Progress (as of 2026-06-25)
 
@@ -186,5 +205,13 @@ app/views/layouts/application.html.erb # sidebar nav built from DemosController:
   Playwright at two viewport widths: 900px shows the promo field and includes
   `user[promo_code]` in the submitted output; 500px hides the field and the
   submitted output has only `user[name]`. Zero console errors in both cases.
+- **Synced controller updates (this branch)** — pulled in two upstream
+  source-repo changes that had drifted from this app's copies:
+  `responsive-disable` gained a debounced resize handler, scoped visibility
+  detection, and same-name-field sync (source PRs #30/#31; required a demo
+  markup fix, see Key decisions above), and `file-preview` gained a missing
+  `·` separator between the filename and size spans (an earlier source fix
+  that had never been copied over). Both re-verified live via Playwright
+  with zero console errors.
 - **Next**: no outstanding TODOs — next work here only starts when a new
   controller is added to the source `stimulus-snippets` repo.
