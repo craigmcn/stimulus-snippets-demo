@@ -270,3 +270,19 @@ body {
 [data-direct-upload-progress-state="done"] {
   color: #15803d;
 }
+
+.responsive-disable-output {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: #f4f2ee;
+  border: 1px solid #e0ddd8;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 700px) {
+  .responsive-disable-field {
+    display: none;
+  }
+}
