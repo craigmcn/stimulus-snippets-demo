@@ -23,7 +23,7 @@ bin/importmap audit          # JS dependency vulnerability scan
 ```
 
 CI (`.github/workflows/ci.yml`, Rails 8 default) runs rubocop, brakeman,
-bundler-audit, and importmap audit on push/PR to `main`.
+bundler-audit, and importmap audit on PRs to `main`, plus a weekly scheduled run on `main`.
 
 ## Project structure
 

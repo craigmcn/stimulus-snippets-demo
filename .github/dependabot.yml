@@ -3,10 +3,22 @@ updates:
 - package-ecosystem: bundler
   directory: "/"
   schedule:
-    interval: weekly
+    interval: monthly
   open-pull-requests-limit: 10
+  groups:
+    security:
+      applies-to: security-updates
+      patterns: ["*"]
+    # One PR for all minor/patch bumps; majors stay separate so a breaking
+    # upgrade can be reviewed (or ignored) on its own.
+    minor-and-patch:
+      update-types: [minor, patch]
+      patterns: ["*"]
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
-    interval: weekly
+    interval: monthly
   open-pull-requests-limit: 10
+  groups:
+    actions:
+      patterns: ["*"]
